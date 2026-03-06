@@ -20,6 +20,9 @@ WEB_EXAMPLES+=stf-test/custom-stf-tests/register.p4
 
 .PHONY: all build claims clean test test-stf web ci-test
 
+EXCLUDES_STATIC := $(shell find testdata/excludes/static -name '*.exclude' ! -path 'testdata/excludes/static/bug/*' -printf '-e %p ')
+EXCLUDES := $(shell find testdata/excludes -name '*.exclude' ! -path 'testdata/excludes/static/bug/*' -printf '-e %p ')
+
 all: build
 
 default: build
